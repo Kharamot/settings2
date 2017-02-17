@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var ViewLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateText()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -19,7 +21,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func updateText(){
+       // UserDefaults.standard.set("hey", forKey: "name_preference")
+        let myText = UserDefaults.standard.string(forKey: "name_preference")!
+        
+        ViewLabel.text = "Text Field = \(myText)"
+    }
 
 }
 

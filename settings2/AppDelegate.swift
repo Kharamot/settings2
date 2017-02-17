@@ -31,10 +31,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        print("inhere")
+        
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        //Viewcontroller isnt root here. We added a navigation controller. If we didnt add the nav controller, we could do this:
+        //let vc = self.window?.rootViewController as! ViewController
+        //vc.updateText()
+        
+        //Correctly done.
+        print("inthere")
+        let nc = self.window?.rootViewController as! UINavigationController
+        let vc = nc.viewControllers[0] as! ViewController //Nav controllers have an array of view controllers. nc.viewController[0] would work as well.
+        if(!vc.isViewLoaded){
+            vc.loadView()
+        }
+        vc.updateText()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
